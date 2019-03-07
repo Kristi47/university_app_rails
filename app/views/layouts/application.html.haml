@@ -1,0 +1,31 @@
+!!! 5
+%html
+  %head
+    %title Grade System!
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+
+  -# me hashtag eshte id e div dhe . eshte klasa
+  -#  <div id="notice" class="message"> flash[:notice] </div>
+  %body
+
+    - if flash[:notice]
+      #notice.message= flash[:notice]
+    - elsif flash[:warning]
+      #warning.message= flash[:warning]
+
+    -#  check if user is logged in or not
+    - if @current_user
+      %p
+      - if @current_user.type === "Instructor"
+        Logged as Instructor: #{@current_user.firstname @current_user.lastname} 
+        Click 
+        = link_to 'here', '/logout', :method => :post 
+        to log out
+    - else
+      %p.login Not Logged In    
+    
+    #main
+      = yield
