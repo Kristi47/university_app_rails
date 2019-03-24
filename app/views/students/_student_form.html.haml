@@ -1,0 +1,26 @@
+- unless @student.errors.empty?
+  %ul
+  - @student.errors.full_messages.each do |error|
+    %li= error
+%table.center
+  %tbody
+    %tr
+      %td
+        = label :student, :firstname, 'Student Firstname'
+      %td
+        = text_field :student, 'firstname'
+    %tr
+      %td
+        = label :student, :lastname, 'Student Lastname'
+      %td
+        = text_field :student, 'lastname'
+    %tr
+      %td
+        = label :student, :email, 'Student Email'
+      %td    
+        = text_field :student, 'email'
+    %tr
+      %td
+        = label :student, :password, 'Student Password'
+      %td    
+        = password_field :student , 'password'

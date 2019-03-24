@@ -1,0 +1,20 @@
+%h1 Grades of #{@student.firstname} for #{@course.name}
+
+%table#customers
+  %thead
+    %tr
+      %th Assessment Item
+      %th Grade
+      %th Action
+      %th Action
+  %tbody
+  = render partial: 'grade', collection: @grades
+  
+-if session[:type] == 'Instructor'
+  %p
+  = link_to 'Add new grade',  '/courses/'+ params[:course_id] + '/student/'+params[:student_id]+'/grades/new'
+  | 
+  = link_to 'Back to homepage', instructor_home_path
+-else  
+  = link_to 'Back to homepage', student_home_path
+  

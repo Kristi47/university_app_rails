@@ -1,0 +1,7 @@
+%h2 Edit Grade
+
+= form_tag  '/courses/'+ params[:course_id] +'/student/'+ params[:student_id]+'/grades/'+params[:id], :method => :put do
+  = render partial: 'grade_form' 
+  = submit_tag 'Save Changes'
+%p
+= link_to 'Back', '/courses/'+params[:course_id]+'/student/'+params[:student_id]+'/grades'

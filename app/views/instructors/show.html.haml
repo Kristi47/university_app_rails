@@ -1,5 +1,6 @@
 -# in app/views/movies/show.html.haml
-%h2 Profile of @instuctor.firstname
+%h1 Instructor Profile 
+
 
 %ul#details
   %li
@@ -13,5 +14,8 @@
     = @instructor.email
  
 
-
-= link_to 'Back to Instructors list', instructors_path
+%p
+  %div.links
+    =link_to 'Edit Profile', edit_instructor_path(@current_user)
+    |
+    =link_to 'Back', instructor_home_path

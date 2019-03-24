@@ -1,0 +1,7 @@
+%h2 Edit Assessment Item #{@assessmentitem.name} for #{@course.name}
+
+= form_tag course_assessmentitem_path(@course,@assessmentitem), :method => :put do
+  = render partial: 'assessmentitem_form' 
+  = submit_tag 'Save Changes'
+%p
+= link_to 'Back to course list', courses_path

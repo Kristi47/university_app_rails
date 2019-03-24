@@ -1,0 +1,35 @@
+%h2 Edit Course
+
+= form_tag course_path(@course), :method => :put do
+    - unless @course.errors.empty?
+        %ul
+        - @course.errors.full_messages.each do |error|
+            %li= error
+    %table.center
+    %tbody
+        %tr
+        %td
+            = label :course, :code, 'Course Code'
+        %td
+            = text_field :course, 'code'
+        %tr
+        %td
+            = label :course, :name, 'Course Name'
+        %td
+            = text_field :course, 'name'
+        %tr
+        %td
+            = label :course, :semester_offered, 'Semester Offered'
+        %td    
+            = text_field :course, 'semester_offered'
+        %tr
+        %td
+            = label :course, :catalog_data, 'Catalog Data'
+        %td    
+            = text_area :course, 'catalog_data'
+        %td
+    %br
+    %br
+    = submit_tag 'Save Changes'
+%br
+= link_to 'Back to course list', courses_path

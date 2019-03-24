@@ -10,9 +10,56 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190205105211) do
+ActiveRecord::Schema.define(version: 20190322231638) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "assessmentitems", force: :cascade do |t|
+    t.string "name"
+    t.string "weight"
+    t.bigint "course_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_assessmentitems_on_course_id"
+  end
+
+  create_table "courses", force: :cascade do |t|
+    t.string "code"
+    t.string "name"
+    t.string "semester_offered"
+    t.text "catalog_data"
+    t.bigint "instructor_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["instructor_id"], name: "index_courses_on_instructor_id"
+  end
+
+  create_table "courses_students", id: false, force: :cascade do |t|
+    t.integer "course_id"
+    t.integer "student_id"
+  end
+
+  create_table "grades", force: :cascade do |t|
+    t.string "grade"
+    t.bigint "assessmentitem_id"
+    t.bigint "student_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["assessmentitem_id"], name: "index_grades_on_assessmentitem_id"
+    t.index ["student_id"], name: "index_grades_on_student_id"
+  end
 
   create_table "instructors", force: :cascade do |t|
+    t.string "firstname"
+    t.string "lastname"
+    t.string "email"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
     t.string "firstname"
     t.string "lastname"
     t.string "email"

@@ -1,0 +1,40 @@
+
+%h1 Edit Instructor Profile
+
+
+= form_tag  instructor_path(@instructor) ,:method => :put do
+    - unless @instructor.errors.empty?
+        %ul
+        - @instructor.errors.full_messages.each do |error|
+            %li= error
+    %table.center
+        %tbody
+            %tr
+            %td
+                = label :instructor, :firstname, 'Firstname'
+            %td
+                = text_field :instructor, 'firstname'
+            %tr
+            %td
+                = label :instructor, :lastname, 'Lastname'
+            %td
+                = text_field :instructor, 'lastname'
+            %tr
+            %td
+                = label :instructor, :email, 'Email'
+            %td    
+                = text_field :instructor, 'email', :disabled => true
+            %tr
+            %td
+                = label :instructor, :password, 'Password'
+            %td    
+                = password_field :instructor , 'password'
+            %tr
+            %td
+                = label :instructor, :password_match, 'Confirm Password'
+            %td    
+                = password_field :instructor , 'password_match'
+    = submit_tag 'Save Changes'
+%p
+    %div.links
+        =link_to 'Back', instructor_home_path

@@ -1,0 +1,31 @@
+-# in app/views/courses/show.html.haml
+%h1 #{@course.name}
+
+%ul#details
+  %li
+    Code:
+    = @course.code
+  %li
+    Name:
+    = @course.name
+  %li
+    Semester Offered:
+    = @course.semester_offered
+
+%h1 Catalog Data:
+%p= @course.catalog_data
+
+
+- if @current_user
+  - if session[:type] === "Instructor"
+    %p
+    = button_to 'Delete', course_path(@course), :method => 'delete', :data => {:confirm => 'Are you sure?'} 
+    = link_to 'Edit', edit_course_path(@course)
+    |
+= link_to 'Show Assessment Items', course_assessmentitems_path(@course)
+|
+- if @current_user
+  - if session[:type] === "Instructor"
+    = link_to 'Show Students', @id+'/index_students'
+    |
+= link_to 'Back to course list', courses_path

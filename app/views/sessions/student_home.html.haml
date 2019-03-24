@@ -1,2 +1,19 @@
-
 %h1 Student Home Page
+
+%table#customers
+  %thead
+    %tr
+      %th Course Code
+      %th Course Name
+      %th Semester Offered
+      %th Overall Grade
+      %th Details
+     
+  %tbody
+  -@courses.each do |course|
+    %tr
+      %td= course.code 
+      %td= course.name
+      %td= course.semester_offered
+      %td= course.overall_grade(@current_user)[:overall]
+      %td= link_to 'Details' , '/courses/'+course.id.to_s+'/student/'+@current_user.id.to_s+'/grades'

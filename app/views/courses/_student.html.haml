@@ -1,0 +1,6 @@
+-# A single row of the All Students table
+%tr
+  %td= student.firstname 
+  %td= student.lastname
+  %td= link_to 'Remove' , :controller => 'courses', :action => 'remove_student', :data => student 
+  %td= link_to 'Grades' , :controller => 'grades', :action => 'index', :student_id => student.id

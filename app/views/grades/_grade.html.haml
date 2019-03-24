@@ -1,0 +1,7 @@
+%tr
+  -assessment = Assessmentitem.find grade.assessmentitem_id
+  %td= assessment.name
+  %td= grade.grade
+  -unless session[:type] == 'Student'
+    %td= link_to "Edit", :controller => 'grades', :action => 'edit', :id => grade.id
+    %td= link_to 'Delete', '/courses/'+params[:course_id]+'/student/'+params[:student_id]+'/grades/'+grade.id.to_s ,:method => 'delete', :data => {:confirm => 'Are you sure?'}

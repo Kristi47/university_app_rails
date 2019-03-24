@@ -1,3 +1,12 @@
 
 
 %h1 Instuctor Home Page
+
+%h3 
+    =link_to 'View Profile', instructor_path(@current_user)
+%h3 
+    =link_to 'View Students', students_path
+%h3 
+    =link_to 'View Courses', courses_path
+%h3 
+    =link_to 'Back to Welcome' , welcome_path

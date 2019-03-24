@@ -1,0 +1,7 @@
+-# A single row of the All Courses table
+%tr
+  %td= course.code 
+  %td= course.name
+  %td= course.semester_offered
+  %td= course.catalog_data
+  %td= link_to "More", course_path(course)

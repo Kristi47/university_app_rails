@@ -6,5 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
- instructor = Instructor.create(:firstname => 'Kristi', :lastname => 'Mita', :email => 'kristimita@gmail.com', :password => 'Kristi@123')
+Instructor.create(:firstname => 'Kristi', :lastname => 'Mita', :email => 'kristimita@gmail.com', :password => 'Kristi@123')
 

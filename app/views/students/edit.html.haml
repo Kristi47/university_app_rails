@@ -1,0 +1,8 @@
+%h2 Edit Student
+
+= form_tag student_path(@student), :method => :put do
+    = render partial: 'student_form' 
+    = submit_tag 'Save Changes'
+%p
+    %div.links
+        = link_to 'Back to student list', students_path

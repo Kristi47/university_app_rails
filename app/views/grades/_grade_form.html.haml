@@ -1,0 +1,18 @@
+- unless @grade.errors.empty?
+  %ul
+    - @grade.errors.full_messages.each do |error|
+      %li= error
+
+%table.center
+  %tbody
+    %tr
+      %td
+        = label :grade, :assessmentitem_id, 'Assessment Item'
+      %td
+        = select :grade ,:assessmentitem_id , options_from_collection_for_select(@assessmentitems, "id", "name")
+    %tr
+      %td
+        = label :grade, :grade, 'Grade'
+      %td
+        = text_field :grade, 'grade'
+   

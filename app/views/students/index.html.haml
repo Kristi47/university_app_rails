@@ -1,0 +1,20 @@
+-#  This file is app/views/students/index.html.haml
+%h1 Students
+
+%table#customers
+  %thead
+    %tr
+      %th Name
+      %th Surname 
+      %th Action 
+  %tbody
+  = render partial: 'student', collection: @students
+
+- if @current_user
+  - if session[:type] == "Instructor"
+    %p  
+      %div.links 
+        = link_to 'Add new Student', new_student_path
+        |
+        = link_to 'Back to homepage', instructor_home_path
+    

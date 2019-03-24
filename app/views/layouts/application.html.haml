@@ -10,7 +10,7 @@
   -# me hashtag eshte id e div dhe . eshte klasa
   -#  <div id="notice" class="message"> flash[:notice] </div>
   %body
-
+    
     - if flash[:notice]
       #notice.message= flash[:notice]
     - elsif flash[:warning]
@@ -19,13 +19,22 @@
     -#  check if user is logged in or not
     - if @current_user
       %p
-      - if @current_user.type === "Instructor"
-        Logged as Instructor: #{@current_user.firstname @current_user.lastname} 
-        Click 
-        = link_to 'here', '/logout', :method => :post 
-        to log out
+      - if session[:login]
+        - if session[:type] == "Instructor"
+          %div.info
+            Logged as Instructor: #{@current_user.firstname} #{@current_user.lastname} 
+            Click 
+            = link_to 'here', '/logout', :method => :post 
+            to log out
+        - elsif session[:type] == "Student"
+          %div.info
+            Logged as Student: #{@current_user.firstname} #{@current_user.lastname}
+            Click 
+            = link_to 'here', '/logout', :method => :post 
+            to log out
     - else
-      %p.login Not Logged In    
+      %p
+        %div.info Not Logged In    
     
     #main
       = yield

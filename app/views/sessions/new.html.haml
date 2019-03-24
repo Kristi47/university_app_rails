@@ -5,7 +5,7 @@
 
 = form_tag login_path, :method => :post do
   = label :user, :usertype, 'Choose'
-  = select :user, :usertype, ['Instructor', 'Student']
+  = select :user, :usertype, ['Student','Instructor']
    
   = label :user, :email, 'Enter your email'
   = text_field :user, 'email' 
@@ -14,3 +14,5 @@
   = password_field :user, 'password' 
   
   = submit_tag 'Login'
+%div.links 
+  = link_to 'Go to welcome page', welcome_path
