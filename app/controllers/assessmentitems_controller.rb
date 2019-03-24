@@ -37,8 +37,8 @@ class AssessmentitemsController < ApplicationController
 	end
 	
 	def create
-		@assessment = @course.assessmentitems.create(assessmentitem_params)
-		if @assessment.save
+		@assessmentitem = @course.assessmentitems.create(assessmentitem_params)
+		if @assessmentitem.save
 			flash[:notice] = "Assessment item was successfully created."
 			redirect_to course_assessmentitems_path(@course)
 		else

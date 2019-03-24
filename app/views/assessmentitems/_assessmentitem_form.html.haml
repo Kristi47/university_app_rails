@@ -1,4 +1,7 @@
-
+- unless  @assessmentitem.errors.empty?
+  %ul
+  -  @assessmentitem.errors.full_messages.each do |error|
+    %li= error
 %table.center
   %tbody
     %tr

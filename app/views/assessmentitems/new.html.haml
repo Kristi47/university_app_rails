@@ -1,6 +1,7 @@
 %h1 New Assessment Item for #{@course.name}
 
 = form_tag course_assessmentitems_path(@course) do
+  
   = render partial: 'assessmentitem_form'
   = submit_tag 'Create Assessment Item'
 %p
